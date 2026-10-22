@@ -100,6 +100,8 @@ make package
 The archive and its SHA-256 checksum are written to `dist/`.
 The archive includes the plugin's source, tests, documentation, and license.
 CI runs the same commands and uploads the archive as a workflow artifact.
+Pushing a version tag such as `v1.2.0` also publishes a GitHub release with the archive and checksum attached.
+The tag must match the version in `plugin.json`, and all checks must pass before publishing.
 
 See [live DMS checks](docs/TESTING.md) and [publishing a release](docs/RELEASING.md).
 Known limits include loss of countdown progress on restart and reminders hidden by Do Not Disturb.

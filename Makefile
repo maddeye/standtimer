@@ -4,7 +4,7 @@
 VERSION := $(shell node -p "require('./plugin.json').version")
 ARCHIVE := standtimer-v$(VERSION).tar.gz
 OUT_DIR ?= dist
-SOURCES := LICENSE README.md CHANGELOG.md Makefile plugin.json StandTimer.qml StandTimerSettings.qml StandTimerWidget.qml Timer.js tests docs .github
+SOURCES := LICENSE README.md CHANGELOG.md Makefile plugin.json StandTimer.qml StandTimerSettings.qml StandTimerWidget.qml Timer.js scripts tests docs .github
 
 .PHONY: test package
 

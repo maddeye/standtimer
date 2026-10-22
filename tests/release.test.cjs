@@ -16,6 +16,19 @@ function run(command, args) {
     return result.stdout;
 }
 
+test("release tags must match the manifest version", () => {
+    const { version } = require("../plugin.json");
+    const script = path.join(root, "scripts/check-release-tag.cjs");
+    for (const [tag, accepted] of [[`v${version}`, true], [version, false], [`v${version}-wrong`, false], ["", false]]) {
+        const result = spawnSync(process.execPath, [script], {
+            cwd: root,
+            env: { ...process.env, GITHUB_REF_NAME: tag },
+            encoding: "utf8"
+        });
+        assert.equal(result.status === 0, accepted, result.stderr);
+    }
+});
+
 test("release archive contains installable source, its license, and a portable checksum", () => {
     const output = fs.mkdtempSync(path.join(os.tmpdir(), "standtimer-release-"));
     try {
@@ -43,6 +56,7 @@ test("release archive contains installable source, its license, and a portable c
         assert.match(license, /13\. Remote Network Interaction/);
         assert.equal(license, fs.readFileSync(path.join(root, "LICENSE"), "utf8"));
         assert.ok(fs.existsSync(path.join(plugin, "Makefile")));
+        assert.ok(fs.existsSync(path.join(plugin, "scripts", "check-release-tag.cjs")));
         assert.ok(fs.existsSync(path.join(plugin, "tests", "timer.test.cjs")));
         const hash = createHash("sha256").update(fs.readFileSync(archive)).digest("hex");
         assert.equal(fs.readFileSync(archive + ".sha256", "utf8"), `${hash}  ${name}\n`);
