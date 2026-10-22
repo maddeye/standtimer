@@ -1,0 +1,22 @@
+{
+    "id": "standTimer",
+    "name": "Stand timer",
+    "description": "Alternate sitting and standing reminders while you use your computer.",
+    "version": "1.2.0",
+    "author": "maddeye",
+    "license": "AGPL-3.0-or-later",
+    "requires_dms": ">=1.6.1",
+    "type": "composite",
+    "capabilities": ["daemon", "dankbar-widget"],
+    "components": {
+        "daemon": "./StandTimer.qml",
+        "widget": "./StandTimerWidget.qml"
+    },
+    "settings": "./StandTimerSettings.qml",
+    "icon": "accessibility_new",
+    "permissions": [
+        "settings_read",
+        "settings_write",
+        "process"
+    ]
+}

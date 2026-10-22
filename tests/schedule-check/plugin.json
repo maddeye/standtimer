@@ -1,0 +1,11 @@
+{
+    "id": "standTimerScheduleCheck",
+    "name": "Stand timer schedule check",
+    "description": "Temporary local-time window checks. Restores the running timer configuration.",
+    "version": "1.0.0",
+    "author": "maddeye",
+    "license": "AGPL-3.0-or-later",
+    "capabilities": ["daemon"],
+    "type": "daemon",
+    "component": "./Check.qml"
+}

@@ -1,0 +1,11 @@
+{
+    "id": "standTimerWidgetCheck",
+    "name": "Stand timer widget check",
+    "description": "Temporary UI checks. Does not change the running timer.",
+    "version": "1.0.0",
+    "author": "maddeye",
+    "license": "AGPL-3.0-or-later",
+    "capabilities": ["daemon"],
+    "type": "daemon",
+    "component": "./Check.qml"
+}
